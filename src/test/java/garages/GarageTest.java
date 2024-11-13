@@ -2,6 +2,8 @@ package garages;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.nio.charset.StandardCharsets;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -94,9 +96,8 @@ class GarageTest {
 	 * directement dans la console (System.out)<br>
 	 * On peut ensuite vérifier que le contenu de la chaîne générée est conforme au
 	 * résultat attendu.
-	 * 
-	 * @throws Exception
-	 */
+	 *
+     */
 	@Test
 	void testCorrectPrintFormat() throws Exception {
 		voitureISIS.entreAuGarage(garageCastres);
@@ -112,7 +113,7 @@ class GarageTest {
 		voitureISIS.imprimeStationnements(ps);
 
 		// On récupère le résultat de l'impression
-		String output = os.toString("UTF8");
+		String output = os.toString(StandardCharsets.UTF_8);
 
 		// Le garage g1 doit apparaître une fois
 		assertEquals(1, countSubstring(output, garageCastres.toString()),
